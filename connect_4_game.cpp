@@ -54,6 +54,9 @@ bool insertPlayer(char **charArr, int columnIndx, char player){
 }
 
 int main(){
+    cout<<"\n------------------------------ Welcome to Connect 4 Game ------------------------------\n\n";
+    cout<<"Rule : \n1. Two-Player Game\n2. Board Size is "<<row<<" rows and "<<column<<" columns.\n3. A Player is considered as Won if they manage to connect 4 consecutive dots either Horizontally, Vertically or Diagonally.\4. If Play Board becomes full then it is considered as Draw.\n\n";
+    cout<<"How to Play : \n1. Game always Starts with Red Player(R) following by Yellow Player(Y).\n2. In each step choose the column number in which you want to drop the ball.\n3. Row will be filled from bottom to top in any column.\n\n";
     char **playBoard;
     playBoard = new char*[row];
     for(int i=0; i<row; i++){
