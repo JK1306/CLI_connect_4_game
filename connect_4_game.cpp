@@ -29,8 +29,17 @@ bool checkPlayerWon(char **arr, char checkColor){
                 }
 
                 addCount = 1;
-                // check diagonal
+                // check right diagonal
                 for(int rowI = i+1, columnI = j+1; addCount<=4 && rowI<row && columnI<column ; rowI++, columnI++, addCount++){
+                    if(arr[rowI][columnI] != checkColor){ break; }
+                }
+                if (addCount == 4){
+                    return true;
+                }
+
+                addCount = 1;
+                // check left diagonal
+                for(int rowI = i-1, columnI = j+1; addCount<=4 && rowI>=0 && columnI<column ; rowI--, columnI++, addCount++){
                     if(arr[rowI][columnI] != checkColor){ break; }
                 }
                 if (addCount == 4){
