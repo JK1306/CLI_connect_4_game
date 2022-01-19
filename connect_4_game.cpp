@@ -5,11 +5,10 @@
 using namespace std;
 
 bool checkPlayerWon(char **arr, char checkColor){
-    int colorCount;
     int addCount;
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
-            if(arr[i][j] == checkColor){
+            if(arr[i][j] == checkColor && arr[i][j] != '\0'){
                 addCount = 1;
                 // check horizontal
                 for(int columnI = j+1; addCount<=4 && columnI<column ; columnI++, addCount++){
@@ -46,7 +45,6 @@ bool checkPlayerWon(char **arr, char checkColor){
                     return true;
                 }
              }
-            // cout<<"Row : "<<i<<" Column : "<<j<<" : "<<((arr[i][j])? arr[i][j] : 'F')<<endl;
         }
     }
     return false;
@@ -95,8 +93,18 @@ int main(){
             for(int j=0; j<column; j++){
                 cout<<playBoard[i][j]<<'\t';
             }
-            cout<<'\n';
+            cout<<"\n\n";
         }
+
+        if(checkPlayerWon(playBoard, player)){
+            if(player == 'R'){
+                cout<<"Hurray...... Player - 1 Red WON... :)\n";
+            }else{
+                cout<<"Yeah..... Player - 2 Yellow WON... :>\n";
+            }
+            break;
+        }
+
         player = (insertionCount%2==0)?'R':'Y';
         cout<<"Player - "<<player<<endl;
         cout<<"Enter Column : ";
@@ -107,14 +115,6 @@ int main(){
         }
         if(insertPlayer(playBoard, inputColumn-1, player)){
             insertionCount++;
-            if(checkPlayerWon(playBoard, player)){
-                if(player == 'R'){
-                    cout<<"Hurray...... Player - 1 Red WON... :)\n";
-                }else{
-                    cout<<"Yeah..... Player - 2 Yellow WON... :>\n";
-                }
-                break;
-            }
         }
         else{
             cout<<"\t\n** Column is Full Try different Column **\n\n";
